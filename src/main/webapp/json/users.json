@@ -1,0 +1,225 @@
+{
+  "code": 0,
+  "msg": "获取数据成功！",
+  "count": 4,
+  "data": [
+    {
+      "id": 2,
+      "username": "admin",
+      "nickname": "管理员",
+      "avatar": "/upload/img/ddc26ce498674a28a0987b2eb4d896e9.jpg",
+      "password": "512c60592355d617df009b5837a571fb",
+      "create": {
+        "month": "FEBRUARY",
+        "year": 2018,
+        "dayOfMonth": 14,
+        "dayOfWeek": "WEDNESDAY",
+        "dayOfYear": 45,
+        "monthValue": 2,
+        "hour": 16,
+        "minute": 7,
+        "nano": 0,
+        "second": 14,
+        "chronology": {
+          "id": "ISO",
+          "calendarType": "iso8601"
+        }
+      },
+      "qqNum": null,
+      "defaultRoleId": 2,
+      "enable": true,
+      "openId": null
+    },
+    {
+      "id": 3,
+      "username": "buguniao",
+      "nickname": "布谷鸟",
+      "avatar": "/upload/img/ddc26ce498674a28a0987b2eb4d896e9.jpg",
+      "password": "512c60592355d617df009b5837a571fb",
+      "create": {
+        "month": "FEBRUARY",
+        "year": 2018,
+        "dayOfMonth": 14,
+        "dayOfWeek": "WEDNESDAY",
+        "dayOfYear": 45,
+        "monthValue": 2,
+        "hour": 16,
+        "minute": 7,
+        "nano": 0,
+        "second": 14,
+        "chronology": {
+          "id": "ISO",
+          "calendarType": "iso8601"
+        }
+      },
+      "qqNum": null,
+      "defaultRoleId": 2,
+      "enable": true,
+      "openId": null
+    },
+    {
+      "id": 4,
+      "username": "buguniao",
+      "nickname": "布谷鸟",
+      "avatar": "/upload/img/ddc26ce498674a28a0987b2eb4d896e9.jpg",
+      "password": "512c60592355d617df009b5837a571fb",
+      "create": {
+        "month": "FEBRUARY",
+        "year": 2018,
+        "dayOfMonth": 14,
+        "dayOfWeek": "WEDNESDAY",
+        "dayOfYear": 45,
+        "monthValue": 2,
+        "hour": 16,
+        "minute": 7,
+        "nano": 0,
+        "second": 14,
+        "chronology": {
+          "id": "ISO",
+          "calendarType": "iso8601"
+        }
+      },
+      "qqNum": null,
+      "defaultRoleId": 2,
+      "enable": true,
+      "openId": null
+    },
+    {
+      "id": 5,
+      "username": "buguniao",
+      "nickname": "布谷鸟",
+      "avatar": "/upload/img/ddc26ce498674a28a0987b2eb4d896e9.jpg",
+      "password": "512c60592355d617df009b5837a571fb",
+      "create": {
+        "month": "FEBRUARY",
+        "year": 2018,
+        "dayOfMonth": 14,
+        "dayOfWeek": "WEDNESDAY",
+        "dayOfYear": 45,
+        "monthValue": 2,
+        "hour": 16,
+        "minute": 7,
+        "nano": 0,
+        "second": 14,
+        "chronology": {
+          "id": "ISO",
+          "calendarType": "iso8601"
+        }
+      },
+      "qqNum": null,
+      "defaultRoleId": 2,
+      "enable": true,
+      "openId": null
+    }
+  ],
+  "currentPageData": [
+    {
+      "id": 2,
+      "username": "admin",
+      "nickname": "管理员",
+      "avatar": "/upload/img/ddc26ce498674a28a0987b2eb4d896e9.jpg",
+      "password": "512c60592355d617df009b5837a571fb",
+      "create": {
+        "month": "FEBRUARY",
+        "year": 2018,
+        "dayOfMonth": 14,
+        "dayOfWeek": "WEDNESDAY",
+        "dayOfYear": 45,
+        "monthValue": 2,
+        "hour": 16,
+        "minute": 7,
+        "nano": 0,
+        "second": 14,
+        "chronology": {
+          "id": "ISO",
+          "calendarType": "iso8601"
+        }
+      },
+      "qqNum": null,
+      "defaultRoleId": 2,
+      "enable": true,
+      "openId": null
+    },
+    {
+      "id": 3,
+      "username": "buguniao",
+      "nickname": "布谷鸟",
+      "avatar": "/upload/img/ddc26ce498674a28a0987b2eb4d896e9.jpg",
+      "password": "512c60592355d617df009b5837a571fb",
+      "create": {
+        "month": "FEBRUARY",
+        "year": 2018,
+        "dayOfMonth": 14,
+        "dayOfWeek": "WEDNESDAY",
+        "dayOfYear": 45,
+        "monthValue": 2,
+        "hour": 16,
+        "minute": 7,
+        "nano": 0,
+        "second": 14,
+        "chronology": {
+          "id": "ISO",
+          "calendarType": "iso8601"
+        }
+      },
+      "qqNum": null,
+      "defaultRoleId": 2,
+      "enable": true,
+      "openId": null
+    },
+    {
+      "id": 4,
+      "username": "buguniao",
+      "nickname": "布谷鸟",
+      "avatar": "/upload/img/ddc26ce498674a28a0987b2eb4d896e9.jpg",
+      "password": "512c60592355d617df009b5837a571fb",
+      "create": {
+        "month": "FEBRUARY",
+        "year": 2018,
+        "dayOfMonth": 14,
+        "dayOfWeek": "WEDNESDAY",
+        "dayOfYear": 45,
+        "monthValue": 2,
+        "hour": 16,
+        "minute": 7,
+        "nano": 0,
+        "second": 14,
+        "chronology": {
+          "id": "ISO",
+          "calendarType": "iso8601"
+        }
+      },
+      "qqNum": null,
+      "defaultRoleId": 2,
+      "enable": true,
+      "openId": null
+    },
+    {
+      "id": 5,
+      "username": "buguniao",
+      "nickname": "布谷鸟",
+      "avatar": "/upload/img/ddc26ce498674a28a0987b2eb4d896e9.jpg",
+      "password": "512c60592355d617df009b5837a571fb",
+      "create": {
+        "month": "FEBRUARY",
+        "year": 2018,
+        "dayOfMonth": 14,
+        "dayOfWeek": "WEDNESDAY",
+        "dayOfYear": 45,
+        "monthValue": 2,
+        "hour": 16,
+        "minute": 7,
+        "nano": 0,
+        "second": 14,
+        "chronology": {
+          "id": "ISO",
+          "calendarType": "iso8601"
+        }
+      },
+      "qqNum": null,
+      "defaultRoleId": 2,
+      "enable": true,
+      "openId": null
+    }
+  ]
+}

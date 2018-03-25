@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>添加题目</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="/static/plugins/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="/static/assets/css/public.css" media="all" />
+</head>
+<body class="childrenBody">
+<div class="layui-row layui-admin-mt10">
+            <span class="layui-breadcrumb">
+                <a href="">首页</a>
+                <a><cite>系统管理</cite></a>
+                <a><cite>题目管理</cite></a>
+                <a><cite>新增题目</cite></a>
+            </span>
+</div>
+<hr>
+<div class="layui-row">
+    <div class="layui-col-md6">
+        <form class="layui-form layui-form-pane" action="">
+            <div class="layui-form-item">
+                <label class="layui-form-label">题目类型</label>
+                <div class="layui-input-block">
+                    <select name="interest" lay-filter="aihao">
+                        <option value=""></option>
+                        <option value="0">单选题</option>
+                        <option value="1" selected="">多选题</option>
+                        <option value="2">编程题</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">适用班级</label>
+                <div class="layui-input-block">
+                    <select name="interest" lay-filter="aihao">
+                        <option value=""></option>
+                        <option value="0">基础班</option>
+                        <option value="1" selected="">就业班</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">所属课程模块</label>
+                <div class="layui-input-inline">
+                    <select name="quiz1">
+                        <option value="">请选择班级类型</option>
+                        <option value="基础班" selected="">基础班</option>
+                        <option value="就业班">就业班</option>
+                    </select>
+                </div>
+                <div class="layui-input-inline">
+                    <select name="quiz2">
+                        <option value="">课程模块</option>
+                        <option value="杭州">JavaSE基础</option>
+                        <option value="宁波" disabled="">JavaSE基本语法</option>
+                        <option value="温州">JavaSE高级</option>
+                        <option value="温州">面向对象</option>
+                    </select>
+                </div>
+                <div class="layui-input-inline">
+                    <select name="quiz3">
+                        <option value="">请选择具体的知识点</option>
+                        <option value="西湖区">JDK</option>
+                        <option value="余杭区">JRE</option>
+                        <option value="拱墅区">JVM</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">日期选择</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="date" id="date1" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">行内表单</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="number" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">密码</label>
+                <div class="layui-input-inline">
+                    <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux">请务必填写用户名</div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">范围</label>
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input type="text" name="price_min" placeholder="￥" autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid">-</div>
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input type="text" name="price_max" placeholder="￥" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="layui-form-item" pane="">
+                <label class="layui-form-label">开关-开</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" title="开关">
+                </div>
+            </div>
+            <div class="layui-form-item" pane="">
+                <label class="layui-form-label">单选框</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="sex" value="男" title="男" checked="">
+                    <input type="radio" name="sex" value="女" title="女">
+                    <input type="radio" name="sex" value="禁" title="禁用" disabled="">
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">文本域</label>
+                <div class="layui-input-block">
+                    <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <button class="layui-btn" lay-submit="" lay-filter="demo2">跳转式提交</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="layui-col-md4">
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">文本域</label>
+            <div class="layui-input-block">
+                <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+<script type="text/javascript" src="/static/plugins/layui/layui.js"></script>
+<script type="text/javascript" src="/static/assets/js/views/items/itemsAdd.js"></script>
+</html>

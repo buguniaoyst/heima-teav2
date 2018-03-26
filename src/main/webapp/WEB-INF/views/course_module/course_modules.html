@@ -1,8 +1,8 @@
 <div class="layui-row layui-admin-mt10">
             <span class="layui-breadcrumb">
                 <a href="">首页</a>
-                <a><cite>系统管理</cite></a>
-                <a><cite>用户管理</cite></a>
+                <a><cite>课程管理</cite></a>
+                <a><cite>课程模块</cite></a>
             </span>
 </div>
 <hr>
@@ -11,39 +11,60 @@
         <div class="layui-tab layui-tab-card">
             <div class="layui-tab-content start">
                 <fieldset class="layui-elem-field layui-field-title">
-                    <legend>用户管理</legend>
+                    <legend>课程模块</legend>
                 </fieldset>
                 <div id="user-table-search">
-                    搜索用户：
+                    搜索课程模块：
                     <div class="layui-inline">
                         <input class="layui-input" id="user-search" autocomplete="off">
                     </div>
-                    <button class="layui-btn"  data-type="reload" id="searUser">搜索</button>
-                    <button class="layui-btn"  data-type="add" id="addUser">新增</button>
+                    <button class="layui-btn"  data-type="reload" id="searCourseModule">搜索</button>
+                    <button class="layui-btn"  data-type="add" id="addCourseModule">新增</button>
                 </div>
-                <table class="layui-hide" id="user-table" lay-filter="user"></table>
+                <table class="layui-hide" id="course-module-table" lay-filter="courseModule"></table>
             </div>
         </div>
     </div>
 </div>
 
 
-<script type="text/html" id="enableTpl">
-    <input type="checkbox" name="enable" value="{{d.id}}" lay-skin="switch" lay-text="正常|锁定" lay-filter="enable" {{
-           d.enable== true ? 'checked' : '' }}>
-</script>
 
 <script type="text/html" id="editUserTpl">
-    <button class="layui-btn layui-btn-sm layui-btn-sm">
-        <i class="layui-icon">&#xe654;</i>
+    <button class="layui-btn layui-btn-sm layui-btn-sm" onclick="showCourseModuleDetail();">
+        查看详情
     </button>
-    <button class="layui-btn layui-btn-sm layui-btn-sm">
+    <button class="layui-btn layui-btn-sm layui-btn-sm" onclick="editCourseModule(this)">
         <i class="layui-icon">&#xe642;</i>
     </button>
-    <button class="layui-btn layui-btn-sm layui-btn-sm">
+    <button class="layui-btn layui-btn-sm layui-btn-sm" onclick="delCourseModule(this)">
         <i class="layui-icon">&#xe640;</i>
     </button>
-    <button class="layui-btn layui-btn-sm layui-btn-sm">
-        <i class="layui-icon">&#xe602;</i>
-    </button>
+</script>
+
+<script type="text/javascript">
+    function showCourseModuleDetail() {
+        layer.alert("查看详情！");
+    }
+
+    function editCourseModule(value) {
+        layer.alert("编辑课程模块！");
+    }
+    
+    function delCourseModule(value) {
+        //询问框
+
+        layer.confirm('确定要删除吗？', {
+            btn: ['删除','不删除'] //按钮
+        }, function(){
+            layer.msg('删除成功！', {
+                time: 1000 //20s后自动关闭
+            });
+        }, function(){
+            layer.msg('那就留着吧！', {
+                time: 20000, //20s后自动关闭
+                btn: ['明白了', '知道了']
+            });
+        });
+    }
+    
 </script>

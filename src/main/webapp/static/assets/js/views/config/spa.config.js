@@ -24,9 +24,9 @@ $(function () {
                 templateUrl: url_prefix + 'course_sechedule/course_sechedules',
                 controller: static_prefix + '/course_sechedule/course_sechedules.js'
             },
-            'notes': {
-                templateUrl: url_prefix + 'note/index',
-                controller: static_prefix + '/notes.js'
+            'tests': {
+                templateUrl: url_prefix + 'tests/tests',
+                controller: static_prefix + '/tests/tests.js'
             },
             'note_edit': {
                 templateUrl: url_prefix + 'note/edit',

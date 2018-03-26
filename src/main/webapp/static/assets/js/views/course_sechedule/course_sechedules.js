@@ -6,8 +6,8 @@ layui.use(['form', 'table', 'element'], function () {
     element.render();
 
     var userTable = table.render({
-        elem: '#user-table'
-        , url: BMY.url.prefix + '/users.json'
+        elem: '#course-schedule-table'
+        , url: BMY.url.prefix + '/course_schedule/list'
         , page: true
         , limit: 10
         , height: 'full'
@@ -15,19 +15,18 @@ layui.use(['form', 'table', 'element'], function () {
         , cols: [[
             {field: 'id', width: 80, title: '序号', sort: true}
             , {
-                field: 'username', title: '用户名', templet: function (d) {
-                    return d.username === '' || d.username === null ? '' : d.username;
+                field: 'className', title: '班级名称', templet: function (d) {
+                    return d.className === '' || d.className === null ? '' : d.className;
                 }
             }
-            ,{field: 'nickname',title: '角色'}
+            ,{field: 'masterName',title: '班主任'}
 
             , {
-                field: 'create', title: '创建日期', sort: true, templet: function (d) {
-                    return BMY.dateFormatter(d.create);
+                field: 'createTime', title: '创建日期', sort: true, templet: function (d) {
+                    return BMY.dateFormatter(d.createTime);
                 }
             }
             , {title: '操作', width: 270, align: 'center', toolbar: '#editUserTpl'}
-            , {title: '状态', width: 90, align: 'center', toolbar: '#enableTpl'}
         ]]
     });
 
@@ -50,13 +49,27 @@ layui.use(['form', 'table', 'element'], function () {
     });
 
 
-    $("#addUser").click(function () {
-        layer.alert("新增用户");
+    $("#addCourseSchedule").click(function () {
+        layui.layer.open({
+            title : "新增课表",
+            type : 2,
+            area: ['640px', '580px'], //宽高
+            content : "/rest/course_sechedule/courseScheduleAdd",
+            success : function(layero, index){
+                var body = layui.layer.getChildFrame('body', index);
+                // if(edit){
+                //     form.render();
+                // }
+
+            }
+        });
     });
 
-    $("#searUser").click(function () {
-        layer.alert("查询用户");
+    $("#searCourseModule").click(function () {
+        layer.alert("查询课表");
     });
+
+
 
 
 });

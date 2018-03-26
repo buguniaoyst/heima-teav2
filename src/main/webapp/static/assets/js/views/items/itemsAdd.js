@@ -74,8 +74,30 @@ layui.use(['form', 'table', 'element'], function () {
     });
 
 
+    /**
+     * 监听题型  动态改变答案选项
+     */
+    form.on('select(itemType)',function (obj) {
+        if(obj.value && obj.value === '1'){
+            //单选题
+            $("#multiItemAnswerArea").addClass("layui-hide");
+            $("#codeItemAnswerArea").addClass("layui-hide");
+            $("#singleItemAnswerArea").removeClass("layui-hide");
+        }else if(obj.value && obj.value === '2'){
+            //多选题
+            $("#multiItemAnswerArea").removeClass("layui-hide");
+            $("#codeItemAnswerArea").addClass("layui-hide");
+            $("#singleItemAnswerArea").addClass("layui-hide");
+        }else{
+            //编程题
+            $("#multiItemAnswerArea").addClass("layui-hide");
+            $("#codeItemAnswerArea").removeClass("layui-hide");
+            $("#singleItemAnswerArea").addClass("layui-hide");
+
+        }
 
 
+    });
 
 
 

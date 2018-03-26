@@ -5,9 +5,9 @@ layui.use(['form', 'table', 'element'], function () {
         , form = layui.form;
     element.render();
 
-    var userTable = table.render({
-        elem: '#user-table'
-        , url: BMY.url.prefix + '/users.json'
+    var courseModuleTable = table.render({
+        elem: '#course-module-table'
+        , url: BMY.url.prefix + '/course_module/list'
         , page: true
         , limit: 10
         , height: 'full'
@@ -15,32 +15,31 @@ layui.use(['form', 'table', 'element'], function () {
         , cols: [[
             {field: 'id', width: 80, title: '序号', sort: true}
             , {
-                field: 'username', title: '用户名', templet: function (d) {
-                    return d.username === '' || d.username === null ? '' : d.username;
+                field: 'moduleName', title: '模块名称', templet: function (d) {
+                    return d.moduleName === '' || d.moduleName === null ? '' : d.moduleName;
                 }
             }
-            ,{field: 'nickname',title: '角色'}
+            ,{field: 'version',title: '版本号'}
+            ,{field: 'subjectName',title: '所属学科'}
+            ,{field: 'classType',title: '班级类型',templet: function (d) {
+                    return d.classType === 1 ? '基础班' : '就业班';
+                }}
 
             , {
-                field: 'create', title: '创建日期', sort: true, templet: function (d) {
-                    return BMY.dateFormatter(d.create);
+                field: 'createTime', title: '创建日期',width:200,sort: true, templet: function (d) {
+                    return BMY.dateFormatter(d.createTime);
                 }
             }
+            ,{field: 'status',title: '状态',templet:function (d) {
+                    return d.status === 1 ? '启用' : '禁用';
+                }}
             , {title: '操作', width: 270, align: 'center', toolbar: '#editUserTpl'}
-            , {title: '状态', width: 90, align: 'center', toolbar: '#enableTpl'}
         ]]
     });
 
 
-    form.on('switch(enable)', function (obj) {
-        BMY.ajax(BMY.url.prefix + "/user/edit/enable", {id: this.value, enable: obj.elem.checked}, function (json) {
-            BMY.okMsgHandle(json);
-            layer.tips('用户状态：' + ((obj.elem.checked) ? "正常" : "锁定"), obj.othis);
-        });
-    });
-
     table.on('sort(user)', function (obj) {
-        userTable.reload({
+        courseModuleTable.reload({
             initSort: obj
             , where: {
                 sort: obj.field
@@ -50,12 +49,24 @@ layui.use(['form', 'table', 'element'], function () {
     });
 
 
-    $("#addUser").click(function () {
-        layer.alert("新增用户");
+    $("#addCourseModule").click(function () {
+        layui.layer.open({
+            title : "新增课程模块",
+            type : 2,
+            area: ['640px', '380px'], //宽高
+            content : "/rest/course_module/courseModuleAdd",
+            success : function(layero, index){
+                var body = layui.layer.getChildFrame('body', index);
+                // if(edit){
+                //     form.render();
+                // }
+
+            }
+        });
     });
 
-    $("#searUser").click(function () {
-        layer.alert("查询用户");
+    $("#searCourseModule").click(function () {
+        layer.alert("搜索课程模块");
     });
 
 

@@ -19,9 +19,9 @@
                         <input class="layui-input" id="user-search" autocomplete="off">
                     </div>
                     <button class="layui-btn"  data-type="reload" id="searUser">搜索</button>
-                    <button class="layui-btn " id="addUser" data-type="add" >新增</button>
+                    <button class="layui-btn " id="addUser" data-type="addT " >新增</button>
                 </div>
-                <table class="layui-hide" id="user-table" lay-filter="user"></table>
+                <table class="layui-hide" id="user-table"  lay-filter="myUserTable"></table>
             </div>
         </div>
     </div>
@@ -34,10 +34,10 @@
 </script>-->
 
 <script type="text/html" id="editUserTpl">
-    <button class="layui-btn layui-btn-sm  " onclick="editUser(this);" data-type="add" >
+    <button class="layui-btn layui-btn-sm  " lay-event="edit" data-type="add" >
         <i class="layui-icon">&#xe642;</i>
     </button>
-    <button class="layui-btn layui-btn-sm " onclick="deleteUser(this);">
+    <button class="layui-btn layui-btn-sm " lay-event="del">
         <i class="layui-icon">&#xe640;</i>
     </button>
     <button class="layui-btn layui-btn-sm ">
@@ -48,20 +48,20 @@
     /**
      * 用户编辑
      */
-    function editUser() {
-        layui.layer.open({
-            title : "编辑用户",
-            type : 2,
-            area: ['640px', '380px'], //宽高
-            content : "/rest/user/userAdd",
-            success : function(layero, index){
-                var body = layui.layer.getChildFrame('body', index);
-                // if(edit){
-                //     form.render();
-                // }
-            }
-        });
-    }
+    // function editUser() {
+    //     layui.layer.open({
+    //         title : "编辑用户",
+    //         type : 2,
+    //         area: ['640px', '380px'], //宽高
+    //         content : "/rest/user/userAdd",
+    //         success : function(layero, index){
+    //             var body = layui.layer.getChildFrame('body', index);
+    //             // if(edit){
+    //             //     form.render();
+    //             // }
+    //         }
+    //     });
+    // }
 
 
     function deleteUser(value) {

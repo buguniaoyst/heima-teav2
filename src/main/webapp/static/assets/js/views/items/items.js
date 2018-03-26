@@ -3,7 +3,7 @@ layui.use(['form', 'table', 'element'], function () {
         , element = layui.element
         ,$ = layui.jquery
         , form = layui.form;
-    element.render();
+        element.render();
 
     var singleItemTable = table.render({
         elem: '#single-item-table'

@@ -18,11 +18,11 @@
     <div class="layui-form-item" >
         <label class="layui-form-label">班级名称</label>
         <div class="layui-input-inline">
-            <input type="text" name="password" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+            <input type="text" id="className" name="className" required lay-verify="required" placeholder="请输入班级名称" autocomplete="off" class="layui-input">
         </div>
         <label class="layui-form-label">班级类型</label>
         <div class="layui-input-inline">
-            <select name="city" lay-verify="required">
+            <select name="classType"  id="classType" lay-verify="required">
                 <option value="">请选择班级类型</option>
                 <option value="1">基础班</option>
                 <option value="2">就业班</option>
@@ -33,7 +33,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">班主任</label>
         <div class="layui-input-inline">
-            <input type="text" name="password" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+            <input type="text" id="masterName" name="masterName" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
         </div>
         <label class="layui-form-label">开班日期</label>
         <div class="layui-input-inline">

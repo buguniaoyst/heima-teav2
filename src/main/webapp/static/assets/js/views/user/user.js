@@ -82,7 +82,7 @@ layui.use(['form', 'table', 'element'], function () {
                 layer.close(index);
             });
         } else if(obj.event === 'edit'){
-            layer.alert('编辑行：<br>'+ JSON.stringify(data))
+//            layer.alert('编辑行：<br>'+ JSON.stringify(data))
             layui.layer.open({
                 title: "编辑用户",
                 type: 2,
@@ -91,11 +91,21 @@ layui.use(['form', 'table', 'element'], function () {
                 success: function (layero, index) {
                     var body = layui.layer.getChildFrame('body', index);
                     body.contents().find("#userName").val(data.userName);
-                   var userName =  body.contents.find("#userName");
+                    body.contents().find("#userPassword").val(data.password);
+                    body.contents().find("#userid").val(data.id);
+                    var roleName = data.role;
+                    if(roleName === '管理员'){
+                         body.contents().find("#userRole").val('1');
+                    }else if(roleName === '普通用户'){
+                     body.contents().find("#userRole").val('2');
+                    }else if(roleName === '游客'){
+                      body.contents().find("#userRole").val('3');
+                   }else{
+                   body.contents().find("#userRole").val('');
+                   }
+
                     form.render();
-                    // if(edit){
-                    //     form.render();
-                    // }
+
                 }
             });
 

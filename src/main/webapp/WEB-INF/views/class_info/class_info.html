@@ -22,7 +22,6 @@
                     <button class="layui-btn"  data-type="add" id="addUser">新增</button>
                 </div>
                 <table class="layui-hide" id="class-table" lay-filter="class_info"></table>
-                <table class="layui-hide" id="stu-table" lay-filter="stu_info"></table>
             </div>
         </div>
     </div>
@@ -37,17 +36,17 @@
     <button class="layui-btn layui-btn-sm layui-btn-sm" onclick="showStuInfo()">
         学员信息
     </button>
-    <button class="layui-btn layui-btn-sm layui-btn-sm">
+    <button class="layui-btn layui-btn-sm layui-btn-sm" lay-event = "edit">
         <i class="layui-icon">&#xe642;</i>
     </button>
-    <button class="layui-btn layui-btn-sm layui-btn-sm">
+    <button class="layui-btn layui-btn-sm layui-btn-sm" lay-event="del">
         <i class="layui-icon">&#xe640;</i>
     </button>
     <button class="layui-btn layui-btn-sm layui-btn-sm">
        班级课表
     </button>
 </script>
-
+<script type="text/javascript" src="/static/assets/js/common.js"></script>
 <script type="text/javascript">
 
     function showStuInfo() {

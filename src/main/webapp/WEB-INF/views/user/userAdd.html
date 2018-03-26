@@ -30,17 +30,18 @@
 		</div>
 		<label class="layui-form-label">密码框</label>
 		<div class="layui-input-inline">
-			<input type="password" name="password" required lay-verify="required" value="123456" placeholder="请输入密码" autocomplete="off" class="layui-input">
+			<input type="password" id="userPassword" name="password" required lay-verify="required"  placeholder="请输入密码" autocomplete="off" class="layui-input">
+			<input type="hidden" name="id" id="userId">
 		</div>
 
 	</div>
 	<div class="layui-form-item">
 		<label class="layui-form-label">角色</label>
 		<div class="layui-input-inline">
-			<select name="city" lay-verify="required">
+			<select id="userRole" name="role" lay-verify="required">
 				<option value="">请选择角色</option>
 				<option value="1">管理员</option>
-				<option value="2">助教</option>
+				<option value="2">普通用户</option>
 				<option value="3">游客</option>
 			</select>
 		</div>

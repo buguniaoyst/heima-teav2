@@ -74,6 +74,36 @@ layui.use(['form', 'table', 'element'], function () {
         layer.alert("查询用户");
     });
 
+    table.on('tool(class_info)',function(obj){
+        var data = obj.data;
+        if(obj.event === 'edit'){
+            layui.layer.open({
+                title: "编辑用户",
+                type: 2,
+                area: ['640px', '380px'], //宽高
+                content: "/rest/class_info/classAdd",
+                success: function (layero, index) {
+                    var body = layui.layer.getChildFrame('body', index);
+                    body.contents().find("#className").val(data.className);
+                    body.contents().find("#masterName").val(data.masterName);
+                    body.contents().find("#classStartDate").val(new Date().format("yyyy/MM/dd"));
+                    body.contents().find("#classType").val(data.classType);
+                    form.render();
+                }
+        });
+        }else if(obj.event === 'del'){
+           layer.confirm('真的删除行么', function(index){
+                           obj.del();
+                           layer.close(index);
+         });
+        }
+
+    })
+
+
+
+
+
 
 });
 

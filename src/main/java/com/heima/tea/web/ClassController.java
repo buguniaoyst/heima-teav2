@@ -49,7 +49,7 @@ public class ClassController extends BaseController{
         }
         return ResponseEntity.ok(200);
     }
-    @RequestMapping(value = "deleteClass",method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.DELETE)
     @ResponseBody
     public ResponseEntity deleteClass(Integer id){
         System.out.println("id = " + id);

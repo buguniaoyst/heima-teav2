@@ -54,7 +54,7 @@ layui.use(['form', 'table', 'element'], function () {
     });
 
 
-    $("#addUser").click(function () {
+    $("#addClass").click(function () {
         layui.layer.open({
             title : "新增班级",
             type : 2,
@@ -62,15 +62,14 @@ layui.use(['form', 'table', 'element'], function () {
             content : "/rest/class_info/classAdd",
             success : function(layero, index){
                 var body = layui.layer.getChildFrame('body', index);
-                if(edit){
-                     form.render();
-                 }
-
+            },
+            end:function () {
+                location.reload();
             }
         });
     });
 
-    $("#searUser").click(function () {
+    $("#searClass").click(function () {
         layer.alert("查询用户");
     });
 
@@ -90,12 +89,21 @@ layui.use(['form', 'table', 'element'], function () {
                     body.contents().find("#classStartDate").val(new Date().format("yyyy/MM/dd"));
                     body.contents().find("#classType").val(data.classType);
                     form.render();
+                },
+                end:function () {
+                    location.reload();
                 }
         });
         }else if(obj.event === 'del'){
            layer.confirm('真的删除行么', function(index){
-                           obj.del();
-                           layer.close(index);
+           obj.del();
+           layer.close(index);
+               $.ajax({
+                   url:"/rest/class?id="+data.id
+                   ,type:"DELETE"
+                   ,success:function(result){
+                       // layer.alert("删除成功!");
+                   }});
          });
         }
 

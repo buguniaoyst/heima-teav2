@@ -19,7 +19,15 @@ layui.use(['form', 'table', 'element'], function () {
                     return d.userName === '' || d.userName === null ? '' : d.userName;
                 }
             }
-            ,{field: 'role',title: '角色'}
+            ,{field: 'role',title: '角色',templet:function (d) {
+                    if(d.role === '1'){
+                        return '管理员';
+                    }else if(d.role === '2') {
+                        return '助教';
+                    }else{
+                        return '游客';
+                    }
+                }}
 
             , {
                 field: 'createTime', title: '创建日期', sort: true, templet: function (d) {
@@ -61,6 +69,9 @@ layui.use(['form', 'table', 'element'], function () {
             type : 2,
             area: ['640px', '380px'], //宽高
             content : "/rest/user/userAdd",
+             end: function () {
+                 location.reload();
+             },
             success : function(layero, index){
                 var body = layui.layer.getChildFrame('body', index);
                 // if(edit){
@@ -80,6 +91,13 @@ layui.use(['form', 'table', 'element'], function () {
             layer.confirm('真的删除行么', function(index){
                 obj.del();
                 layer.close(index);
+                $.ajax({
+                    url:"/rest/user?ids="+data.id
+                    ,type:"DELETE"
+                    ,success:function(result){
+                        // layer.alert("删除成功!");
+                    }});
+
             });
         } else if(obj.event === 'edit'){
 //            layer.alert('编辑行：<br>'+ JSON.stringify(data))
@@ -92,20 +110,11 @@ layui.use(['form', 'table', 'element'], function () {
                     var body = layui.layer.getChildFrame('body', index);
                     body.contents().find("#userName").val(data.userName);
                     body.contents().find("#userPassword").val(data.password);
-                    body.contents().find("#userid").val(data.id);
-                    var roleName = data.role;
-                    if(roleName === '管理员'){
-                         body.contents().find("#userRole").val('1');
-                    }else if(roleName === '普通用户'){
-                     body.contents().find("#userRole").val('2');
-                    }else if(roleName === '游客'){
-                      body.contents().find("#userRole").val('3');
-                   }else{
-                   body.contents().find("#userRole").val('');
-                   }
-
+                    body.contents().find("#userId").val(data.id);
+                    body.contents().find("#userRole").val( data.role);
                     form.render();
-
+                },end: function () {
+                    location.reload();
                 }
             });
         }
@@ -115,7 +124,6 @@ layui.use(['form', 'table', 'element'], function () {
     $("#searUser").click(function () {
         layer.alert("查询用户");
     });
-
 
 });
 

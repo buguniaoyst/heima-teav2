@@ -4,15 +4,17 @@ import com.github.abel533.entity.Example;
 import com.github.abel533.mapper.Mapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.heima.tea.domain.BasePojo;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Date;
 import java.util.List;
 
 /**
  * @author 布谷鸟
  * @version V1.0
  */
-public class BaseService<T> {
+public class BaseService<T extends BasePojo> {
     /**
      * 注入时在Spring容器中找T的通用mapper实现
      */
@@ -107,6 +109,8 @@ public class BaseService<T> {
      * @return
      */
     public Integer save(T t){
+        t.setCreateTime(new Date());
+        t.setUpdateTime(t.getCreateTime());
         return this.getMapper().insert(t);
     }
 

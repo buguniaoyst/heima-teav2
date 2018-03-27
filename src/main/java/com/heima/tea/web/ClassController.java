@@ -52,7 +52,7 @@ public class ClassController extends BaseController{
     @RequestMapping(value = "deleteClass",method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity deleteClass(Integer id){
-
+        System.out.println("id = " + id);
         Integer count = classService.deleteById(id);
         if(count==0){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("删除失败");

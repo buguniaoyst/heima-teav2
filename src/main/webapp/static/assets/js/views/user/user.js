@@ -108,9 +108,6 @@ layui.use(['form', 'table', 'element'], function () {
 
                 }
             });
-
-
-
         }
     });
 

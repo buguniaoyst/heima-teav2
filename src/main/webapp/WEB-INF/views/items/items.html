@@ -28,21 +28,21 @@
 </div>
 <div class="layui-row">
     <div class="layui-col-md4 layui-col-space5">
-        <table class="layui-hide" id="single-item-table" lay-filter="user"></table>
+        <table class="layui-hide" id="single-item-table" lay-filter="singleItemTable"></table>
     </div>
     <div class="layui-col-md4 layui-col-space5">
-        <table class="layui-hide" id="multi-item-table" lay-filter="user"></table>
+        <table class="layui-hide" id="multi-item-table" lay-filter="multiItemTable"></table>
     </div>
     <div class="layui-col-md4 layui-col-space5">
-        <table class="layui-hide" id="code-item-table" lay-filter="user"></table>
+        <table class="layui-hide" id="code-item-table" lay-filter="codeItemTable"></table>
     </div>
 </div>
 
 <script type="text/html" id="editUserTpl">
-    <button class="layui-btn layui-btn-sm layui-btn-sm">
+    <button class="layui-btn layui-btn-sm layui-btn-sm" lay-event="edit">
         <i class="layui-icon">&#xe642;</i>
     </button>
-    <button class="layui-btn layui-btn-sm layui-btn-sm">
+    <button class="layui-btn layui-btn-sm layui-btn-sm" lay-event="del">
         <i class="layui-icon">&#xe640;</i>
     </button>
 </script>

@@ -26,11 +26,10 @@ layui.use(['form', 'layer', 'layedit', 'laydate', 'upload'], function () {
             , success: function (res,status) {
                 console.log(res);
                 console.log(status);
-                table.reload('idTest', {
-                    url: '/api/table/search'
-                    ,where: {} //设定异步数据接口的额外参数
-                    //,height: 300
+                table.reload('userListTable', {
+                    url: '/rest/user/list'
                 });
+                layer.close(index);
             }
 
         });

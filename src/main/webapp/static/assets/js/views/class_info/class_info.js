@@ -86,6 +86,7 @@ layui.use(['form', 'table', 'element'], function () {
                     var body = layui.layer.getChildFrame('body', index);
                     body.contents().find("#className").val(data.className);
                     body.contents().find("#masterName").val(data.masterName);
+                    body.contents().find("#classId").val(data.id);
                     body.contents().find("#classStartDate").val(new Date().format("yyyy/MM/dd"));
                     body.contents().find("#classType").val(data.classType);
                     form.render();

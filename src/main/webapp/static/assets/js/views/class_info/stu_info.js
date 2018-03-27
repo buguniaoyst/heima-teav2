@@ -7,7 +7,7 @@ layui.use(['form', 'table', 'element'], function () {
 
     var userTable = table.render({
         elem: '#stu-table'
-        , url: BMY.url.prefix + '/class/list'
+        , url: BMY.url.prefix + '/student/list'
         , page: true
         , limit: 10
         , height: 'full'
@@ -15,16 +15,14 @@ layui.use(['form', 'table', 'element'], function () {
         , cols: [[
             {field: 'id', width: 80, title: '序号', sort: true}
             , {
-                field: 'className',width:300, title: '班级名称', templet: function (d) {
-                    return d.className === '' || d.className === null ? '' : d.className;
+                field: 'studentName',width:300, title: '学生姓名', templet: function (d) {
+                    return d.studentName === '' || d.studentName === null ? '' : d.studentName;
                 }
             }
-            ,{field: 'classType',title: '班级类型',width:100,templet: function (d) {
-                    return d.classType === 1  ? '基础班' : '就业班';
+            ,{field: 'studentNo',title: '学号',width:100}
+            ,{field: 'sex',title: '性别',width:100,templet: function (d) {
+                    return d.sex === 1  ? '男' : '女';
                 }}
-            ,{field: 'masterName',title: '班主任',width:100}
-            ,{field: 'assistant',title: '助教',width:100}
-
             , {
                 field: 'createTime', title: '创建日期',width:200, sort: true, templet: function (d) {
                     return BMY.dateFormatter(d.createTime);
@@ -54,12 +52,13 @@ layui.use(['form', 'table', 'element'], function () {
     });
 
 
-    $("#addUser").click(function () {
+    //新增学员
+    $("#addStu").click(function () {
         layui.layer.open({
-            title : "新增班级",
+            title : "添加学员",
             type : 2,
-            area: ['740px', '480px'], //宽高
-            content : "/rest/class_info/classAdd",
+            area: ['740px', '380px'], //宽高
+            content : "/rest/class_info/stuAdd",
             success : function(layero, index){
                 var body = layui.layer.getChildFrame('body', index);
                 // if(edit){
@@ -69,6 +68,38 @@ layui.use(['form', 'table', 'element'], function () {
             }
         });
     });
+
+    //监听工具条
+    table.on('tool(stu_info)',function (obj) {
+        var data = obj.data;
+        if(obj.event === 'edit'){
+            layui.layer.open({
+                title : "编辑学员信息",
+                type : 2,
+                area: ['740px', '380px'], //宽高
+                content : "/rest/class_info/stuAdd",
+                success : function(layero, index){
+                    var body = layui.layer.getChildFrame('body', index);
+                    body.contents().find("#studentName").val(data.studentName);
+                    body.contents().find("#studentNo").val(data.studentNo);
+                    var sex = data.sex;
+                    if(sex === 1){
+                        body.contents().find(".sex").get(0).checked = true
+                    }else{
+                        body.contents().find(".sex").get(1).checked = true
+                    }
+                    form.render();
+                }
+            });
+        }else if (obj.event === 'del'){
+            layer.alert("删除.......");
+        }
+
+    });
+
+
+
+
 
     $("#searUser").click(function () {
         layer.alert("查询用户");

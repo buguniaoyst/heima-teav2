@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "t_item")
+@Table(name = "t_item_info")
 public class ItemInfo extends BasePojo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

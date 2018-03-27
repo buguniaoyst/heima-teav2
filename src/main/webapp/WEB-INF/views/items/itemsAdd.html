@@ -29,18 +29,18 @@
                 <div class="layui-inline">
                     <label class="layui-form-label">题目类型</label>
                     <div class="layui-input-block">
-                        <select name="interest" lay-filter="itemType">
+                        <select name="itemType" id="itemTypeId" lay-filter="itemType">
                             <option value=""></option>
                             <option value="1">单选题</option>
                             <option value="2" >多选题</option>
-                            <option value="3" selected="">编程题</option>
+                            <option value="0" selected="">编程题</option>
                         </select>
                     </div>
                 </div>
                 <div class="layui-inline" style="margin-left: 90px;">
                     <label class="layui-form-label">适用班级</label>
                     <div class="layui-input-inline">
-                        <select name="interest" lay-filter="aihao">
+                        <select name="classType"  id="classTypeId" lay-filter="aihao">
                             <option value=""></option>
                             <option value="0">基础班</option>
                             <option value="1" selected="">就业班</option>
@@ -55,37 +55,39 @@
                 <div class="layui-input-inline">
                     <select name="quiz1">
                         <option value="">请选择班级类型</option>
-                        <option value="基础班" selected="">基础班</option>
-                        <option value="就业班">就业班</option>
+                        <option value="1" selected="">基础班</option>
+                        <option value="2">就业班</option>
                     </select>
                 </div>
                 <div class="layui-input-inline" style="margin-left: 19px;">
                     <select name="quiz2">
                         <option value="">课程模块</option>
-                        <option value="杭州">JavaSE基础</option>
-                        <option value="宁波" disabled="">JavaSE基本语法</option>
-                        <option value="温州">JavaSE高级</option>
-                        <option value="温州">面向对象</option>
+                        <option value="1001">JavaSE基础</option>
+                        <option value="1002" >JavaSE基本语法</option>
+                        <option value="1003">JavaSE高级</option>
+                        <option value="1004">面向对象</option>
                     </select>
                 </div>
                 <div class="layui-input-inline" style="margin-left: 13px;">
                     <select name="quiz3">
                         <option value="">请选择具体的知识点</option>
-                        <option value="西湖区">JDK</option>
-                        <option value="余杭区">JRE</option>
-                        <option value="拱墅区">JVM</option>
+                        <option value="100101">JDK</option>
+                        <option value="100102">JRE</option>
+                        <option value="100103">JVM</option>
                     </select>
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">分值</label>
                 <div class="layui-input-block">
-                    <input name="itemScore" type="number" class="layui-input">
+                    <input name="itemScore" id="itemScoreId" type="number" class="layui-input">
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <div class="layui-inline">
+                    <input type="hidden" name="videoPath" id="videoPathId">
+                    <input type="hidden" name="picPath" id="picPathId">
                     <button type="button" class="layui-btn" id="test5"><i class="layui-icon"></i>上传视频</button>
                     <button type="button" class="layui-btn layui-btn-danger" id="test7"><i class="layui-icon"></i>上传图片</button>
                 </div>
@@ -94,7 +96,7 @@
             <div class="layui-form-item layui-form-text">
                 <label class="layui-form-label">题干</label>
                 <div class="layui-input-block">
-                    <textarea placeholder="请输入题干" class="layui-textarea"></textarea>
+                    <textarea placeholder="请输入题干"  name="itemContent" id="itemContentId" class="layui-textarea"></textarea>
                 </div>
             </div>
 
@@ -102,7 +104,7 @@
               <div class="layui-form-item layui-form-text"  >
                   <label class="layui-form-label">参考答案</label>
                   <div class="layui-input-block">
-                      <textarea placeholder="参考答案" class="layui-textarea"></textarea>
+                      <textarea placeholder="参考答案" name="itemAnswer" id="itemAnswerId" class="layui-textarea"></textarea>
                   </div>
               </div>
           </div>
@@ -114,11 +116,11 @@
                     <div >
                         <label class="layui-form-label">选项A</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="number" autocomplete="off" class="layui-input">
+                            <input type="text" name="itemAnswerA" autocomplete="off" class="layui-input singleItemOption">
                         </div>
                         <label class="layui-form-label">是否答案</label>
                         <div class="layui-input-inline">
-                            <input type="radio" name="number" autocomplete="off" class="layui-input">
+                            <input type="radio" name="number" autocomplete="off" class="layui-input itemAnswerOption">
                         </div>
                     </div>
                 </div>
@@ -126,11 +128,11 @@
                     <div >
                         <label class="layui-form-label">选项B</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="number" autocomplete="off" class="layui-input">
+                            <input type="text" name="itemAnswerB" autocomplete="off" class="layui-input singleItemOption">
                         </div>
                         <label class="layui-form-label">是否答案</label>
                         <div class="layui-input-inline">
-                            <input type="radio" name="number" autocomplete="off" class="layui-input">
+                            <input type="radio" name="number" autocomplete="off" class="layui-input itemAnswerOption">
                         </div>
                     </div>
                 </div>
@@ -138,11 +140,11 @@
                     <div >
                         <label class="layui-form-label" >选项C</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="number" autocomplete="off" class="layui-input">
+                            <input type="text" name="itemAnswerC" autocomplete="off" class="layui-input singleItemOption">
                         </div>
                         <label class="layui-form-label">是否答案</label>
                         <div class="layui-input-inline">
-                            <input type="radio" name="number" autocomplete="off" class="layui-input">
+                            <input type="radio" name="number"  autocomplete="off" class="layui-input itemAnswerOption">
                         </div>
                     </div>
                 </div>
@@ -150,11 +152,11 @@
                     <div >
                         <label class="layui-form-label">选项D</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="number" autocomplete="off" class="layui-input">
+                            <input type="text" name="itemAnswerD" autocomplete="off" class="layui-input singleItemOption">
                         </div>
                         <label class="layui-form-label">是否答案</label>
                         <div class="layui-input-inline">
-                            <input type="radio" name="number" autocomplete="off" class="layui-input">
+                            <input type="radio" name="number" autocomplete="off" class="layui-input itemAnswerOption">
                         </div>
                     </div>
                 </div>
@@ -167,11 +169,11 @@
                     <div >
                         <label class="layui-form-label">选项A</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="number" autocomplete="off" class="layui-input">
+                            <input type="text" name="itemAnswerA"  autocomplete="off" class="layui-input multiItemOption">
                         </div>
                         <label class="layui-form-label">是否答案</label>
                         <div class="layui-input-inline">
-                            <input type="checkbox" name="number" autocomplete="off" class="layui-input">
+                            <input type="checkbox" name="number" autocomplete="off" class="layui-input multiAnswerOption">
                         </div>
                     </div>
                 </div>
@@ -179,11 +181,11 @@
                     <div >
                         <label class="layui-form-label">选项B</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="number" autocomplete="off" class="layui-input">
+                            <input type="text" name="itemAnswerB" autocomplete="off" class="layui-input multiItemOption">
                         </div>
                         <label class="layui-form-label">是否答案</label>
                         <div class="layui-input-inline">
-                            <input type="checkbox" name="number" autocomplete="off" class="layui-input">
+                            <input type="checkbox" name="number" autocomplete="off" class="layui-input multiAnswerOption">
                         </div>
                     </div>
                 </div>
@@ -191,11 +193,11 @@
                     <div >
                         <label class="layui-form-label">选项C</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="number" autocomplete="off" class="layui-input">
+                            <input type="text" name="itemAnswerC" autocomplete="off" class="layui-input multiItemOption">
                         </div>
                         <label class="layui-form-label">是否答案</label>
                         <div class="layui-input-inline">
-                            <input type="checkbox" name="number" autocomplete="off" class="layui-input">
+                            <input type="checkbox" name="number" autocomplete="off" class="layui-input multiAnswerOption">
                         </div>
                     </div>
                 </div>
@@ -203,11 +205,11 @@
                     <div >
                         <label class="layui-form-label">选项D</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="number" autocomplete="off" class="layui-input">
+                            <input type="text" name="itemAnswerD" autocomplete="off" class="layui-input multiItemOption">
                         </div>
                         <label class="layui-form-label">是否答案</label>
                         <div class="layui-input-inline">
-                            <input type="checkbox" name="number" autocomplete="off" class="layui-input">
+                            <input type="checkbox" name="number" autocomplete="off" class="layui-input multiAnswerOption">
                         </div>
                     </div>
                 </div>

@@ -16,9 +16,9 @@
   </listener>
 
   <!-- 编码过滤器，以UTF8编码 -->
-  <!--<filter>
+  <filter>
     <filter-name>encodingFilter</filter-name>
-    <filter-class>com.heima.test.utils.GenericEncodingFilter</filter-class>
+    <filter-class>com.heima.tea.filter.GenericEncodingFilter</filter-class>
     <init-param>
       <param-name>encoding</param-name>
       <param-value>UTF8</param-value>
@@ -27,7 +27,7 @@
   <filter-mapping>
     <filter-name>encodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
-  </filter-mapping>-->
+  </filter-mapping>
 
   <!-- 解决PUT请求无法提交表单数据的问题 -->
   <filter>

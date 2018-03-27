@@ -110,7 +110,7 @@ public class BaseService<T extends BasePojo> {
      */
     public Integer save(T t){
         t.setCreateTime(new Date());
-        t.setUpdateTime(new Date());
+        t.setUpdateTime(t.getCreateTime());
         return this.getMapper().insert(t);
     }
 

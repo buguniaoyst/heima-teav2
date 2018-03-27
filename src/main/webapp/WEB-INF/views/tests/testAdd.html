@@ -1,0 +1,81 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/static/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/static/plugins/layui/css/layui.css">
+    <link rel="stylesheet" href="/static/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/assets/css/views/admin.css">
+    <style>
+        div.layui-select-title{
+            margin-left: 121px;
+        }
+    </style>
+</head>
+<hr>
+<div class="layui-row layui-col-space15">
+    <div class="layui-form layui-col-md3">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">试卷名称</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="number" lay-verify="required|number" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="layui-form layui-col-md3">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">课程模块</label>
+                <select name="city" lay-verify="required">
+                    <option value="">请选择班级类型</option>
+                    <option value="1">JavaSE基础</option>
+                    <option value="2">JavaSE高级</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+    <div class="layui-form layui-col-md3">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">考试时长</label>
+                <div class="layui-input-inline">
+                    <input type="number" placeholder="考试时长（单位：min）" name="url" lay-verify="url" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="layui-form layui-col-md3">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <button class="layui-btn">立即组卷</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="layui-row">
+    <div class="layui-col-md4 layui-col-space5">
+        <table class="layui-hide" id="single-item-table" lay-filter="user"></table>
+    </div>
+    <div class="layui-col-md4 layui-col-space5">
+        <table class="layui-hide" id="multi-item-table" lay-filter="user"></table>
+    </div>
+    <div class="layui-col-md4 layui-col-space5">
+        <table class="layui-hide" id="code-item-table" lay-filter="user"></table>
+    </div>
+</div>
+
+<script type="text/html" id="editUserTpl">
+    <button class="layui-btn layui-btn-sm layui-btn-sm">
+        查看详情
+    </button>
+</script>
+<script type="text/javascript" src="/static/plugins/layui/layui.js"></script>
+<script type="text/javascript" src="/static/assets/js/views/tests/testAdd.js"></script>
+</html>

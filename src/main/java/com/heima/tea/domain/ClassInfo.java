@@ -12,9 +12,18 @@ public class ClassInfo  extends  BasePojo implements Serializable{
     private Integer id;
     private Integer testId;
     private String className;
-    private Integer classType;//班级类型  0-基础班  1-就业班
-    private String assistant;//助教姓名
-    private String masterName;//班主任姓名
+    /**
+     * 班级类型  0-基础班  1-就业班
+     */
+    private Integer classType;
+    /**
+     * 助教姓名
+     */
+    private String assistant;
+    /**
+     * 班主任姓名
+     */
+    private String masterName;
     private Integer studentCount;
     private Date startDate;
 

@@ -62,9 +62,9 @@ layui.use(['form', 'table', 'element'], function () {
             content : "/rest/class_info/classAdd",
             success : function(layero, index){
                 var body = layui.layer.getChildFrame('body', index);
-                // if(edit){
-                //     form.render();
-                // }
+                if(edit){
+                     form.render();
+                 }
 
             }
         });

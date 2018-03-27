@@ -40,6 +40,7 @@ public class UserController extends BaseController {
     }
 
     @RequestMapping(value="addOrUpdate",method = RequestMethod.POST)
+    @ResponseBody
     public ResponseEntity<Void> addUser(User user){
         try {
             Integer number=0;
@@ -52,7 +53,7 @@ public class UserController extends BaseController {
             if(number==0){
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
             }
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+            return ResponseEntity.status(HttpStatus.OK).body(null);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

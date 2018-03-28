@@ -59,7 +59,4 @@ public class ClassController extends BaseController{
         }
         return ResponseEntity.ok(200);
     }
-
-
-
 }

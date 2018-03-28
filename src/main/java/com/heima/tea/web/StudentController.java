@@ -6,19 +6,19 @@ import com.heima.tea.domain.ClassInfo;
 import com.heima.tea.domain.StudentInfo;
 import com.heima.tea.domain.User;
 import com.heima.tea.page.Page;
-import com.heima.tea.service.ClassService;
 import com.heima.tea.service.StudentService;
-import com.heima.tea.vo.ClassQueryVo;
+import com.heima.tea.utils.ExcelUtils;
 import com.heima.tea.vo.StudentQueryVo;
+import org.apache.tools.ant.taskdefs.condition.Http;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -63,10 +63,8 @@ public class StudentController extends BaseController {
             }
             return ResponseEntity.status(HttpStatus.OK).body(null);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
     }
 
@@ -85,4 +83,42 @@ public class StudentController extends BaseController {
         }
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
+
+
+    @RequestMapping(value = "importExcel",method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity importExcel(MultipartFile excelFile,Integer classId){
+        //判断文件是否有内容
+        if(excelFile.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("文件上传有误");
+        }
+        //根据上传的文件获取输入流
+        InputStream in;
+        try {
+            in = excelFile.getInputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("文件解析有误");
+        }
+        //解析上传的文件
+        List<List<Object>> list = null;
+        try {
+            list = ExcelUtils.getDataFromExcel(in,excelFile.getOriginalFilename());
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("解析Excel文件有误");
+        }
+        //去除第一行无效数据
+        list.remove(0);
+        System.out.println(list);
+        if(list.size()==0){
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("没有数据");
+        }
+        //调用Service访问完成学生信息的保存
+        studentService.importStudent(list,classId);
+        return ResponseEntity.ok(200);
+    }
+
+
+
 }

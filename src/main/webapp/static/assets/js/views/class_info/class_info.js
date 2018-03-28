@@ -105,6 +105,24 @@ layui.use(['form', 'table', 'element'], function () {
                        // layer.alert("删除成功!");
                    }});
          });
+        }else if(obj.event === 'show') {
+            //查看班级中的学生信息
+            var index = layui.layer.open({
+                title : "学员信息",
+                type : 2,
+                content : "/rest/class_info/stu_info",
+                success : function(layero, index){
+                    //将classId 添加到页面隐藏域中
+                    var body = layui.layer.getChildFrame('body', index);
+                    body.find("#stuClassId").val(data.id);
+                    form.render();
+                }
+            })
+            layui.layer.full(index);
+            //改变窗口大小时，重置弹窗的宽高，防止超出可视区域（如F12调出debug的操作）
+            $(window).on("resize",function(){
+                layui.layer.full(index);
+            })
         }
 
     })

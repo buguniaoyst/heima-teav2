@@ -33,7 +33,7 @@
 </script>-->
 
 <script type="text/html" id="editUserTpl">
-    <button class="layui-btn layui-btn-sm layui-btn-sm" onclick="showStuInfo()">
+    <button class="layui-btn layui-btn-sm layui-btn-sm" lay-event="show" >
         学员信息
     </button>
     <button class="layui-btn layui-btn-sm layui-btn-sm" lay-event = "edit">
@@ -47,21 +47,3 @@
     </button>
 </script>
 <script type="text/javascript" src="/static/assets/js/common.js"></script>
-<script type="text/javascript">
-
-    function showStuInfo() {
-        var index = layui.layer.open({
-            title : "学员信息",
-            type : 2,
-            content : "/rest/class_info/stu_info",
-            success : function(layero, index){
-            }
-        })
-        layui.layer.full(index);
-        //改变窗口大小时，重置弹窗的宽高，防止超出可视区域（如F12调出debug的操作）
-        $(window).on("resize",function(){
-            layui.layer.full(index);
-        })
-    }
-
-</script>

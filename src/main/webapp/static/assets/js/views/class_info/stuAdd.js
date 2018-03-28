@@ -14,5 +14,17 @@ layui.use(['form','layer','layedit','laydate','upload'],function(){
         format:'yyyy/MM/dd'
     });
 
+    //提交stuAdd表单
+    form.on('submit(stuAddOrUpdate)', function (data) {
+        $.post('/rest/student/addOrUpdate', data.field, function (res,status) {
+            var index = parent.layer.getFrameIndex(window.name);
+            parent.layer.close(index);
+        });
+        return false;
+    });
+
+
+
+
 
 })

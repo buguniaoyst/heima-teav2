@@ -34,22 +34,7 @@ layui.use(['form', 'table', 'element'], function () {
     });
 
 
-    form.on('switch(enable)', function (obj) {
-        BMY.ajax(BMY.url.prefix + "/user/edit/enable", {id: this.value, enable: obj.elem.checked}, function (json) {
-            BMY.okMsgHandle(json);
-            layer.tips('用户状态：' + ((obj.elem.checked) ? "正常" : "锁定"), obj.othis);
-        });
-    });
 
-    table.on('sort(user)', function (obj) {
-        userTable.reload({
-            initSort: obj
-            , where: {
-                sort: obj.field
-                , order: obj.type
-            }
-        });
-    });
 
 
     //新增学员
@@ -61,10 +46,15 @@ layui.use(['form', 'table', 'element'], function () {
             content : "/rest/class_info/stuAdd",
             success : function(layero, index){
                 var body = layui.layer.getChildFrame('body', index);
+                var classId = $("#stuClassId").val();
+                body.contents().find("#classId").val(classId);
                 // if(edit){
                 //     form.render();
                 // }
 
+            },
+            end:function () {
+                location.reload();
             }
         });
     });
@@ -82,6 +72,7 @@ layui.use(['form', 'table', 'element'], function () {
                     var body = layui.layer.getChildFrame('body', index);
                     body.contents().find("#studentName").val(data.studentName);
                     body.contents().find("#studentNo").val(data.studentNo);
+                    body.contents().find("#stuId").val(data.id);
                     var sex = data.sex;
                     if(sex === 1){
                         body.contents().find(".sex").get(0).checked = true
@@ -89,10 +80,21 @@ layui.use(['form', 'table', 'element'], function () {
                         body.contents().find(".sex").get(1).checked = true
                     }
                     form.render();
+                },end:function () {
+                    location.reload();
                 }
             });
         }else if (obj.event === 'del'){
-            layer.alert("删除.......");
+            layer.confirm('真的删除么', function(index){
+                obj.del();
+                layer.close(index);
+                $.ajax({
+                    url:"/rest/student?ids="+data.id
+                    ,type:"DELETE"
+                    ,success:function(result){
+                        // layer.alert("删除成功!");
+                    }});
+            });
         }
 
     });

@@ -67,7 +67,7 @@
         <button class="layui-btn " id="addStu" data-type="add" >新增学员</button>
     </div>
     <div class="layui-col-md2">
-        <button type="button" class="layui-btn" id="test1">
+        <button type="button" class="layui-btn" id="importStuExcel">
             <i class="layui-icon">&#xe67c;</i>导入学员信息
         </button>
     </div>
@@ -90,15 +90,22 @@
     </button>
 </script>
 <script>
-    layui.use('upload', function(){
-        var upload = layui.upload;
+    layui.use(['upload','jquery'], function(){
+        var upload = layui.upload
+            ,$ = layui.jquery;
 
         //执行实例
         var uploadInst = upload.render({
-            elem: '#test1' //绑定元素
-            ,url: '/upload/' //上传接口
+            elem: '#importStuExcel' //绑定元素
+            ,accept:'file'
+            ,field:"excelFile"
+            ,url: '/rest/student/importExcel' //上传接口
+            ,data:{
+                classId:$("#stuClassId").val()
+            }
             ,done: function(res){
                 //上传完毕回调
+                location.reload();
             }
             ,error: function(){
                 //请求异常回调

@@ -34,7 +34,6 @@ public class ClassController extends BaseController{
         classPage = classService.findPagination(classPage, ClassInfo.class, classQueryVo);
         return layuiTable(classPage);
     }
-
     @RequestMapping(value = "classAddOrUpdate",method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity classAddOrUpdate(ClassInfo classInfo) throws Exception{

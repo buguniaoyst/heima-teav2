@@ -65,7 +65,7 @@ layui.use(['form', 'table', 'element'], function () {
             content : "/rest/items/itemsAdd",
             success : function(layero, index){
             }
-        })
+        });
         layui.layer.full(index);
         //改变窗口大小时，重置弹窗的宽高，防止超出可视区域（如F12调出debug的操作）
         $(window).on("resize",function(){
@@ -101,31 +101,47 @@ layui.use(['form', 'table', 'element'], function () {
 
 
 
-    form.on('switch(enable)', function (obj) {
-        BMY.ajax(BMY.url.prefix + "/user/edit/enable", {id: this.value, enable: obj.elem.checked}, function (json) {
-            BMY.okMsgHandle(json);
-            layer.tips('用户状态：' + ((obj.elem.checked) ? "正常" : "锁定"), obj.othis);
+    //监听新增题目提交按钮
+    form.on('submit(addItem)', function (data) {
+        console.log(data.field);
+      //根据题型 封装数据
+        var itemType = data.field.itemType;
+         if('1' === itemType) {
+            //封装单选题
+             var optionA = data.field.sItemAnswerA;
+             var optionB = data.field.sItemAnswerB;
+             var optionC = data.field.sItemAnswerC;
+             var optionD = data.field.sItemAnswerD;
+             data.field.itemAnswerOption = optionA+"$$"+optionB+"$$"+optionC+"$$"+optionD;
+        }else if('2' === itemType) {
+            //封装多选题  itemAnswerD
+
+             var optionA = data.field.mItemAnswerA;
+             var optionB = data.field.mItemAnswerB;
+             var optionC = data.field.mItemAnswerC;
+             var optionD = data.field.mItemAnswerD;
+             data.field.itemAnswerOption = optionA+"$$"+optionB+"$$"+optionC+"$$"+optionD;
+
+             var answerA = data.field.itemAnswerA;
+             var answerB = data.field.itemAnswerB;
+             var answerC = data.field.itemAnswerC;
+             var answerD = data.field.itemAnswerD;
+             data.field.itemAnswer = answerA+"$$"+answerB+"$$"+answerC+"$$"+answerD;
+        }
+
+        $.post('/rest/item/itemAddOrUpdate', data.field, function (res,status) {
+            console.log(res);
+            console.log(status);
+            var index = parent.layer.getFrameIndex(window.name);
+            parent.layer.close(index);
+            parent.location.reload();
         });
-    });
 
-    table.on('sort(user)', function (obj) {
-        userTable.reload({
-            initSort: obj
-            , where: {
-                sort: obj.field
-                , order: obj.type
-            }
-        });
+        return false;
+
     });
 
 
-    $("#addUser").click(function () {
-        layer.alert("新增用户");
-    });
-
-    $("#searUser").click(function () {
-        layer.alert("查询用户");
-    });
 
 
 });

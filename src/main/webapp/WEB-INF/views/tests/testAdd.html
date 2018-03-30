@@ -16,19 +16,27 @@
 </head>
 <hr>
 <div class="layui-row layui-col-space15">
-    <div class="layui-form layui-col-md3">
+    <form>
+
+    </form>
+    <div class="layui-form layui-col-md21">
         <div class="layui-form-item">
             <div class="layui-inline">
                 <label class="layui-form-label">试卷名称</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="number" lay-verify="required|number" autocomplete="off" class="layui-input">
+                    <input type="text" name="number" required lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
-        </div>
-    </div>
-    <div class="layui-form layui-col-md3">
-        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">试卷类型</label>
+                <select name="city" lay-verify="required">
+                    <option value="">请选择试卷类型</option>
+                    <option value="1">每日作业卷</option>
+                    <option value="2">课后测试卷</option>
+                </select>
+            </div>
+
             <div class="layui-inline">
                 <label class="layui-form-label">课程模块</label>
                 <select name="city" lay-verify="required">
@@ -38,21 +46,13 @@
                 </select>
             </div>
 
-        </div>
-    </div>
-    <div class="layui-form layui-col-md3">
-        <div class="layui-form-item">
             <div class="layui-inline">
                 <label class="layui-form-label">考试时长</label>
                 <div class="layui-input-inline">
-                    <input type="number" placeholder="考试时长（单位：min）" name="url" lay-verify="url" autocomplete="off" class="layui-input">
+                    <input type="number" required lay-verify="required|number" placeholder="考试时长（单位：min）" name="url" lay-verify="url" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
-        </div>
-    </div>
-    <div class="layui-form layui-col-md3">
-        <div class="layui-form-item">
             <div class="layui-inline">
                 <button class="layui-btn">立即组卷</button>
             </div>

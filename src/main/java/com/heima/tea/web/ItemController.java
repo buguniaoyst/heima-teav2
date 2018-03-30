@@ -36,7 +36,7 @@ public class ItemController extends BaseController {
 
     @RequestMapping(value = "itemAddOrUpdate",method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity itemAddOrUpdate(@RequestBody ItemInfo itemInfo){
+    public ResponseEntity itemAddOrUpdate(ItemInfo itemInfo){
         System.out.println("itemInfo = " + itemInfo);
         int rows = 0;
         if(itemInfo.getId()==null){

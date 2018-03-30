@@ -1,7 +1,6 @@
 package com.heima.tea.domain;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "t_item_info")

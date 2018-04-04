@@ -16,21 +16,19 @@
 </head>
 <hr>
 <div class="layui-row layui-col-space15">
-    <form>
-
-    </form>
+ <form class="layui-form" >
     <div class="layui-form layui-col-md21">
         <div class="layui-form-item">
             <div class="layui-inline">
                 <label class="layui-form-label">试卷名称</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="number" required lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" name="testName" required lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
             <div class="layui-inline">
                 <label class="layui-form-label">试卷类型</label>
-                <select name="city" lay-verify="required">
+                <select name="testType" lay-verify="required">
                     <option value="">请选择试卷类型</option>
                     <option value="1">每日作业卷</option>
                     <option value="2">课后测试卷</option>
@@ -39,38 +37,39 @@
 
             <div class="layui-inline">
                 <label class="layui-form-label">课程模块</label>
-                <select name="city" lay-verify="required">
+                <select name="testSourcesId" lay-verify="required">
                     <option value="">请选择班级类型</option>
                     <option value="1">JavaSE基础</option>
                     <option value="2">JavaSE高级</option>
                 </select>
             </div>
 
-            <div class="layui-inline">
-                <label class="layui-form-label">考试时长</label>
-                <div class="layui-input-inline">
-                    <input type="number" required lay-verify="required|number" placeholder="考试时长（单位：min）" name="url" lay-verify="url" autocomplete="off" class="layui-input">
-                </div>
+            <!--<div class="layui-inline">-->
+                <!--<label class="layui-form-label">考试时长</label>-->
+                <!--<div class="layui-input-inline">-->
+                    <!--<input type="number" required lay-verify="required|number" placeholder="考试时长（单位：min）" name="url" lay-verify="url" autocomplete="off" class="layui-input">-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="layui-inline layui-form-item">
+                <button class="layui-btn " lay-submit lay-filter="createTest">立即组卷</button>
             </div>
 
-            <div class="layui-inline">
-                <button class="layui-btn">立即组卷</button>
-            </div>
         </div>
     </div>
-</div>
-<div class="layui-row">
-    <div class="layui-col-md4 layui-col-space5">
-        <table class="layui-hide" id="single-item-table" lay-filter="user"></table>
+    <div class="layui-row layui-form-item">
+        <div class="layui-col-md4 layui-col-space5">
+            <table class="layui-hide" id="single-item-table" lay-filter="single-item-table"></table>
+        </div>
+        <div class="layui-col-md4 layui-col-space5">
+            <table class="layui-hide" id="multi-item-table" lay-filter="multi-item-table"></table>
+        </div>
+        <div class="layui-col-md4 layui-col-space5">
+            <table class="layui-hide" id="code-item-table" lay-filter="code-item-table"></table>
+        </div>
     </div>
-    <div class="layui-col-md4 layui-col-space5">
-        <table class="layui-hide" id="multi-item-table" lay-filter="user"></table>
-    </div>
-    <div class="layui-col-md4 layui-col-space5">
-        <table class="layui-hide" id="code-item-table" lay-filter="user"></table>
-    </div>
-</div>
 
+ </form>
+</div>
 <script type="text/html" id="editUserTpl">
     <button class="layui-btn layui-btn-sm layui-btn-sm">
         查看详情
@@ -78,4 +77,5 @@
 </script>
 <script type="text/javascript" src="/static/plugins/layui/layui.js"></script>
 <script type="text/javascript" src="/static/assets/js/views/tests/testAdd.js"></script>
+<script type="text/javascript" src="/static/assets/js/common.js"></script>
 </html>

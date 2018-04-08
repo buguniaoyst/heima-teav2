@@ -29,8 +29,8 @@ public class TestSourceController extends BaseController{
     private TestSourceServie testSourceServie;
     @RequestMapping(value = "list",method = RequestMethod.GET)
     @ResponseBody
-    public LayUITable<TestSource> list(Page<TestSource> testSourcePage, TestSourceQueryVo testSourceQueryVo) {
-        testSourcePage = testSourceServie.findPagination(testSourcePage, TestSource.class, testSourceQueryVo);
+    public LayUITable<TestSource> list(Page<TestSource> testSourcePage, Integer testType,TestSourceQueryVo testSourceQueryVo) {
+        testSourcePage = testSourceServie.findPagination(testSourcePage,testType, TestSource.class, testSourceQueryVo);
         return layuiTable(testSourcePage);
     }
 

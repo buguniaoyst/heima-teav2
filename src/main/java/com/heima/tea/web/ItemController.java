@@ -6,6 +6,7 @@ import com.heima.tea.domain.ItemInfo;
 import com.heima.tea.page.Page;
 import com.heima.tea.service.ItemService;
 import com.heima.tea.vo.ItemQueryVo;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author 布谷鸟
@@ -37,7 +41,6 @@ public class ItemController extends BaseController {
     @RequestMapping(value = "itemAddOrUpdate",method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity itemAddOrUpdate(ItemInfo itemInfo){
-        System.out.println("itemInfo = " + itemInfo);
         int rows = 0;
         if(itemInfo.getId()==null){
             rows = this.itemService.save(itemInfo);
@@ -62,6 +65,15 @@ public class ItemController extends BaseController {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body("没有内容可以删除");
         }
         return ResponseEntity.ok("成功");
+    }
+
+    @RequestMapping(value = "getItemsByItemIds",method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String,List<ItemInfo>> getItemsByItemIds(String  itemIds){
+        if (StringUtils.isBlank(itemIds)) {
+            return  null;
+        }
+       return itemService.getItemsByItemIds(itemIds.split(","));
     }
 
 }

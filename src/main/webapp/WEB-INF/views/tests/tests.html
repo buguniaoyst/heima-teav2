@@ -6,27 +6,38 @@
             </span>
 </div>
 <hr>
-<div class="layui-row layui-col-space15">
-    <div class="layui-col-md12">
-        <div class="layui-tab layui-tab-card">
-            <div class="layui-tab-content start">
-                <fieldset class="layui-elem-field layui-field-title">
-                    <legend>试卷管理</legend>
-                </fieldset>
-                <div id="user-table-search">
-                    搜索试卷：
-                    <div class="layui-inline">
-                        <input class="layui-input" id="user-search" autocomplete="off">
+<form class="layui-form">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-tab layui-tab-card">
+                <div class="layui-tab-content start">
+                    <fieldset class="layui-elem-field layui-field-title">
+                        <legend>试卷管理</legend>
+                    </fieldset>
+
+                    <div id="user-table-search">
+                        关键字：
+                        <div class="layui-inline">
+                            <input class="layui-input" id="user-search" autocomplete="off">
+                        </div>
+                        <div class="layui-inline">
+                            <select name="testType" lay-filter="testTypeId">
+                                <option value="">试卷类型</option>
+                                <option value="1">课后测试</option>
+                                <option value="2">课后作业</option>
+                                <option value="3">开班考试</option>
+                            </select>
+                        </div>
+                        <button class="layui-btn"  data-type="reload" id="searUser">搜索</button>
+
+                        <button class="layui-btn " id="addTest" data-type="addTest" >组卷管理</button>
                     </div>
-                    <button class="layui-btn"  data-type="reload" id="searUser">搜索</button>
-                    <button class="layui-btn " id="addTest" data-type="addTest" >组卷管理</button>
+                    <table class="layui-hide" id="test-source-table" lay-filter="testSourceTable"></table>
                 </div>
-                <table class="layui-hide" id="test-source-table" lay-filter="testSourceTable"></table>
             </div>
         </div>
     </div>
-</div>
-
+</form>
 
 <!--<script type="text/html" id="enableTpl">
     <input type="checkbox" name="enable" value="{{d.id}}" lay-skin="switch" lay-text="正常|锁定" lay-filter="enable" {{
@@ -48,34 +59,13 @@
     </button>
 </script>
 <script type="text/javascript">
-    /**
-     * 用户编辑
-     */
-    function editUser() {
-        layui.layer.open({
-            title : "编辑用户",
-            type : 2,
-            area: ['640px', '380px'], //宽高
-            content : "/rest/user/userAdd",
-            success : function(layero, index){
-                var body = layui.layer.getChildFrame('body', index);
-                // if(edit){
-                //     form.render();
-                // }
-            }
-        });
-    }
+    layui.use(['form', 'table', 'element'], function () {
+        var table = layui.table
+            , element = layui.element
+            , $ = layui.jquery
+            , form = layui.form;
+        form.render();
 
-
-    function deleteUser(value) {
-        layer.confirm('确定要删除这个用户吗？', {
-            btn: ['删除','不删除'] //按钮
-        });
-    }
-
-    function assignedTest() {
-        layer.alert("分配试卷");
-    }
-
+    });
 
 </script>

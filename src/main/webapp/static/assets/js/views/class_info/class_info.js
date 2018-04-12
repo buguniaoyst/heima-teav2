@@ -30,7 +30,7 @@ layui.use(['form', 'table', 'element'], function () {
                     return BMY.dateFormatter(d.createTime);
                 }
             }
-            , {title: '操作', width: 290, align: 'center', toolbar: '#editUserTpl'}
+            , {title: '操作', width: 330, align: 'center', toolbar: '#editUserTpl'}
            /* , {title: '状态', width: 90, align: 'center', toolbar: '#enableTpl'}*/
         ]]
     });
@@ -123,6 +123,32 @@ layui.use(['form', 'table', 'element'], function () {
             $(window).on("resize",function(){
                 layui.layer.full(index);
             })
+        }else if(obj.event == 'upGrade'){
+            if(data.classType === 2){
+                layer.alert("只有基础班才能升级！");
+                return;
+            }
+            layui.layer.open({
+                title: "基础班升级",
+                type: 2,
+                area: ['640px', '380px'], //宽高
+                content: "/rest/class_info/classAdd",
+                success: function (layero, index) {
+                    var body = layui.layer.getChildFrame('body', index);
+                    var className = data.className.replace("基础", "就业");
+                    body.contents().find("#className").val(className);
+                    body.contents().find("#className").attr("readonly", true);
+                    body.contents().find("#masterName").val(data.masterName);
+                    body.contents().find("#classId").val(data.id);
+                    body.contents().find("#classStartDate").val(new Date().format("yyyy/MM/dd"));
+                    body.contents().find("#classType").val(2);
+                    body.contents().find("#classType").attr("readonly", true);
+                    form.render();
+                },
+                end:function () {
+                    location.reload();
+                }
+            });
         }
 
     })

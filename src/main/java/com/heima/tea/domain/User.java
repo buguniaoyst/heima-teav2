@@ -24,6 +24,7 @@ public class User extends BasePojo implements Serializable  {
      * 用户名
      */
     private String userName;
+
     /**
      * 密码
      */
@@ -74,4 +75,6 @@ public class User extends BasePojo implements Serializable  {
                 ", role='" + role + '\'' +
                 '}';
     }
+
+
 }

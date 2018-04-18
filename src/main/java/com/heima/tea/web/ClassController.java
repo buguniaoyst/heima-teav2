@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
+
 /**
  * @author 布谷鸟
  * @version V2.0
@@ -34,10 +36,20 @@ public class ClassController extends BaseController{
         classPage = classService.findPagination(classPage, ClassInfo.class, classQueryVo);
         return layuiTable(classPage);
     }
+
+
+
     @RequestMapping(value = "classAddOrUpdate",method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity classAddOrUpdate(ClassInfo classInfo) throws Exception{
+    public ResponseEntity classAddOrUpdate(ClassInfo classInfo,Integer modifyType) throws Exception{
         int count = 0 ;
+        //根据modifyType字段判断是否升级操作
+        if (modifyType == 2) {
+            classInfo.setClassType(2);
+            classInfo.setCreateTime(new Date());
+            count =  classService.updateSelectiveById(classInfo);
+        }
+
         if(classInfo.getId()==null){
             count = classService.save(classInfo);
         }else{
@@ -48,6 +60,9 @@ public class ClassController extends BaseController{
         }
         return ResponseEntity.ok(200);
     }
+
+
+
     @RequestMapping(method = RequestMethod.DELETE)
     @ResponseBody
     public ResponseEntity deleteClass(Integer id){

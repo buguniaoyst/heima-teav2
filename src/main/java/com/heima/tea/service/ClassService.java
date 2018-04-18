@@ -21,4 +21,6 @@ public class ClassService extends  BaseService<ClassInfo>{
         classPage.setTotalCount(classInfos.size());
         return  classPage;
     }
+
+
 }

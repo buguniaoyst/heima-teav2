@@ -142,6 +142,7 @@ layui.use(['form', 'table', 'element'], function () {
                     body.contents().find("#classId").val(data.id);
                     body.contents().find("#classStartDate").val(new Date().format("yyyy/MM/dd"));
                     body.contents().find("#classType").val(2);
+                    body.contents().find("#modifyType").val(2);
                     body.contents().find("#classType").attr("readonly", true);
                     form.render();
                 },

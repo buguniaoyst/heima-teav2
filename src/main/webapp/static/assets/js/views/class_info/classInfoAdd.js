@@ -23,4 +23,4 @@ layui.use(['form','layer','layedit','laydate','upload'],function(){
             return false;
         });
 
-})
+});
